@@ -1,24 +1,31 @@
 import { View, Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
+import React,  { useState } from 'react'
 import { MenuIcon, CashIcon, DocumentReportIcon } from 'react-native-heroicons/outline';
 import Currency from 'react-currency-formatter';
 import Chart from '../components/Chart';
 import TouchableOpacityText from '../components/TouchableOpacityText';
 import Item from '../components/Item';
+import SideBar from '../components/SideBar';
 
 const HomeScreen = () => {
+  const [isDisplayMenu, setIsDisplayMenu] = useState(false);
+
   return (
     <SafeAreaView className="bg-green-900 flex-1 pt-7 space-y-2">
-      <View className="bg-white px-2 py-3    justify-between flex-row items-center">
-        <TouchableOpacity>
+      <View className="bg-white px-2 py-3 justify-between flex-row items-center">
+        <TouchableOpacity onPress={() => { setIsDisplayMenu(!isDisplayMenu); }}>
             <MenuIcon color="black" size={30} />
         </TouchableOpacity>
         <View className="flex-1 flex-row justify-center items-center space-x-2">
             <Text className="font-bold">My account</Text>
             <CashIcon color="black" size={20}/>
-        </View>        
-      </View>
-     
+        </View>                   
+      </View>         
+      {
+        isDisplayMenu ? 
+          <SideBar isDisplayMenu={isDisplayMenu}/>
+        : <></>
+       }
       <ScrollView
         vertical
       >
@@ -38,13 +45,14 @@ const HomeScreen = () => {
                 <Text className="font-bold text-xl">Expenses</Text>
             </View>            
             <View className="space-y-3">
-                <View className="flex-row">
+               
+             <View className="flex-row">
                     <TouchableOpacityText title="Category" />
                     <TouchableOpacityText title="Monthly" />
                 </View>
                 <View>
                   <Chart />
-                </View>
+                </View>             
             </View>
           </View>
         </View>
