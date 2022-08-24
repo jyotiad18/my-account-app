@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-na
 import { HomeIcon, PresentationChartBarIcon, TableIcon, ArrowSmDownIcon, ArrowSmUpIcon  } from 'react-native-heroicons/outline';
 import TabHomeScreen from '../tabscreens/TabHomeScreen';
 import TabChartScreen from '../tabscreens/TabChartScreen';
+import TabCategoryScreen from '../tabscreens/TabCategoryScreen';
 import TestScreen from '../screens/TestScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -9,7 +10,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNav = () => {
   return (
-     <Tab.Navigator initialRouteName="Chart"
+     <Tab.Navigator initialRouteName="Catgory"
         screenOptions={{
            tabBarShowLabel: false,
            tabBarStyle: { position: 'absolute', bottom: 10, left: 10, right: 10, borderRadius: 15, height: 70, elevation: 0, 
@@ -23,7 +24,7 @@ const TabNav = () => {
         />
         <Tab.Screen name="Chart" 
             component={TabChartScreen}
-            options={{headerShown: false,  tabBarIcon: () => ( <PresentationChartBarIcon size={30}  color="white"/> ) }} 
+            options={{headerShown: false, tabBarIcon: () => ( <PresentationChartBarIcon size={30}  color="white"/> ) }} 
         />
         <Tab.Screen name="Credit" 
             component={TestScreen}
@@ -34,8 +35,8 @@ const TabNav = () => {
             options={{tabBarIcon: () => ( <ArrowSmUpIcon size={30} color="white" /> ) }} 
         />
         <Tab.Screen name="Catgory" 
-            component={TestScreen}
-            options={{ tabBarIcon: () => ( <TableIcon size={30} color="white" /> ) }} 
+            component={TabCategoryScreen}
+            options={{ headerShown: false, tabBarIcon: () => ( <TableIcon size={30} color="white" /> ) }} 
         />
      </Tab.Navigator>
   )

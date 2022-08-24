@@ -1,11 +1,8 @@
 import { View, Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native'
 import React,  { useState } from 'react'
-import { CogIcon } from 'react-native-heroicons/outline';
-import Currency from 'react-currency-formatter';
-import RowView from '../components/RowView';
-import Item from '../components/Item';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import TestScreen from '../screens/TestScreen';
+import MonthlyChart from '../components/MonthlyChart';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -24,11 +21,11 @@ const TabChartScreen = () => {
           }}>
           <Tab.Screen
               name='Monthly'
-              component={TestScreen}
+              component={MonthlyChart}
           />
           <Tab.Screen
               name='Category'
-              component={TestScreen}
+              component={MonthlyChart}
           />                    
       </Tab.Navigator>
     </ScrollView>    

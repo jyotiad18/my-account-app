@@ -56,15 +56,15 @@ const Labels = ({ slices, height, width }) => {
             .map((value, index) => ({
                 value,
                 svg: {
-                    fill: randomColor(),
-                    //onPress: () => console.log('press', index),
+                    fill: randomColor(),                    
+                    onPress: () => { alert(value) }
                 },
                 key: `pie-${index}`,
             }))
   
 
   return (
-    <PieChart style={{ height: 200 }} 
+    <PieChart style={{ height: 400 }} 
         valueAccessor={({ item }) => item.amount } 
         spacing={0}
         data={data}
